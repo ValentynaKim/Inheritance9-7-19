@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title></title>
+</head>
+<body>
+   <script>
+       //function number one
+       function Shape(name, sides) {
+           this.name = n;
+           this.sides = s;
+       }
+       //function number two
+       function Rectangle(height, width, name, sides) {
+           this.height = h;
+           this.width = w;
+           //here we call function Shape
+           Shape.call(this, name, sides);
+       }
+       //this is creating a copy of Shape function
+       Rectangle.prototype.area = Object.create(Shape.prototype);
+       //this function is to calculate an area of rectangle
+       Rectangle.prototype.area = function () {
+           console.log(this.height * this.width)
+       }
+       //this function is to calculate a perimeter of rectangle
+       Rectangle.prototype.perimeter = function () {
+           console.log(this.width * 2 + this.height * 2);
+       }
+       //this function Square
+       function Square(height, name, sides) {
+           //we call Rectangle function and set width to be a height
+           Rectangle.call(this, height, height, name, sides)
+       }
+       Square.prototype = Object.create(Rectangle.prototype);
+       function Circle(radius, name, sides) {
+           this.radius = r;
+           Shape.call(this, name, sides)
+       }
+       Circle.prototype = Object.create(Shape.prototype)
+       Circle.prototype.area = function () {
+           console.log(this.radius * this.radius * 3.14)
+       }
+   </script>
+</body>
+</html>
